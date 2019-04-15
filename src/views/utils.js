@@ -1,6 +1,6 @@
 const configData = {
-  maxItems: 10,
-  maxLanguages: 20
+  maxItems: 5,
+  maxLanguages: 9
 };
 
 function getUserStatus(data = "", view) {
