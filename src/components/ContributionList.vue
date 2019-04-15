@@ -17,15 +17,15 @@
 </template>
 
 <script>
-  export default {
-    name: "ContributionList",
-    props: ["issueList"]
-  };
+export default {
+  name: "ContributionList",
+  props: ["issueList"]
+};
 </script>
 
 <style lang="less">
-  .contribute-item {
-    padding-bottom: 10px;
-    border-bottom: 1px solid #ccc;
-  }
+.contribute-item {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}
 </style>

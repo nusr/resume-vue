@@ -7,8 +7,8 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
-    "move":"node ./publish.js",
-    "publish":"npm run build && npm run move"
+    "move":"node ./move.js",
+    "publish":"npm run test:unit && npm run build && npm run move"
   },
   "dependencies": {
     "element-ui": "^2.7.2",
@@ -37,7 +37,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && npm run publish"
+      "pre-commit": "npm run publish && lint-staged"
     }
   },
   "lint-staged": {

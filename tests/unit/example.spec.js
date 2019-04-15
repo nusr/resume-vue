@@ -1,12 +1,12 @@
 import { shallowMount } from "@vue/test-utils";
-import HelloWorld from "@/components/HelloWorld.vue";
+import Print from "@/components/Print.vue";
 
-describe("HelloWorld.vue", () => {
-  it("renders props.msg when passed", () => {
-    const msg = "new message";
-    const wrapper = shallowMount(HelloWorld, {
-      propsData: { msg }
+describe("Print.vue", () => {
+  it("renders props.userName when passed", () => {
+    const userName = "nusr";
+    const wrapper = shallowMount(Print, {
+      propsData: { userName }
     });
-    expect(wrapper.text()).toMatch(msg);
+    expect(wrapper.text()).toMatch("Email");
   });
 });

@@ -39,13 +39,13 @@
         <li v-for="item in popularList" :key="item.name">
           <a :href="`/resume?name=${item.name}`" :title="item.realName">{{
             item.realName
-            }}</a>
+          }}</a>
         </li>
       </ul>
 
       <h2>Notes, Information and Future features</h2>
       <p class="home-medium" style="padding-bottom:2em;">
-        <br/>
+        <br />
         This is the first version. I am planning on adding things as such as
         your most committed forks, most committed repositories and make the "My
         Popular Repositories" be built from your complete list of repositories.
@@ -58,7 +58,7 @@
         <a
           href="https://github.com/resume/resume.github.com"
           title="resume.github.com"
-        >resume.github.com</a
+          >resume.github.com</a
         >
       </footer>
     </article>
@@ -66,126 +66,126 @@
 </template>
 
 <script>
-  export default {
-    name: "Home",
-    data() {
-      return {
-        rules: {
-          name: [
-            {
-              required: true,
-              message: "please enter your GitHub username",
-              trigger: "blur"
-            }
-          ]
-        },
-        formData: {
-          name: ""
-        },
-        popularList: [
+export default {
+  name: "Home",
+  data() {
+    return {
+      rules: {
+        name: [
           {
-            name: "mxcl",
-            realName: "Max Howell"
-          },
-          {
-            name: "defunkt",
-            realName: "Chris Wanstrath"
+            required: true,
+            message: "please enter your GitHub username",
+            trigger: "blur"
           }
         ]
-      };
-    },
-    methods: {
-      submitForm() {
-        this.$refs.formData.validate(valid => {
-          if (valid) {
-            this.$router.push(`/resume?name=${this.formData.name}`);
-          } else {
-            console.log("error submit!!");
-            return false;
-          }
-        });
-      }
-    }
-  };
-</script>
-<style lang="less">
-  .home {
-    h1 {
-      font-size: 48px;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-    }
-
-    &-header {
-      padding-bottom: 1em;
-      border-bottom: 1px solid #ccc;
-    }
-
-    &-form {
-      display: flex;
-      padding-top: 1.4em;
-      padding-bottom: 0.8em;
-    }
-
-    &-input {
-      flex: 1;
-
-      .el-input__inner {
-        height: 44px;
-        border: 2px solid #444;
-      }
-    }
-
-    &-button {
-      width: 150px;
-      margin-left: 10px;
-      height: 44px;
-      font-family: Georgia, Garamond, "Times New Roman", Times, serif;
-      font-size: 18px;
-      color: #fff;
-      background-color: #323232;
-      border: 1px solid #444;
-      border-radius: 4px;
-
-      &:hover {
-        cursor: pointer;
-      }
-    }
-
-    &-popular {
-      display: flex;
-      list-style: none;
-
-      margin-bottom: 3em;
-      flew-wrap: wrap;
-
-      > li {
-        width: 40%;
-        padding-right: 10%;
-
-        a {
-          padding: 10px;
-          display: block;
-          border-bottom: 1px solid #ccc;
+      },
+      formData: {
+        name: ""
+      },
+      popularList: [
+        {
+          name: "mxcl",
+          realName: "Max Howell"
+        },
+        {
+          name: "defunkt",
+          realName: "Chris Wanstrath"
         }
-      }
-    }
-
-    &-desc {
-      zoom: 1;
-    }
-
-    &-padding {
-      padding: 1.4em 0;
-    }
-
-    &-medium {
-      font-size: 15px;
-    }
-
-    &-footer {
-      padding: 1em 0 5em 5em;
-      border-top: 1px solid #ccc;
+      ]
+    };
+  },
+  methods: {
+    submitForm() {
+      this.$refs.formData.validate(valid => {
+        if (valid) {
+          this.$router.push(`/resume?name=${this.formData.name}`);
+        } else {
+          console.log("error submit!!");
+          return false;
+        }
+      });
     }
   }
+};
+</script>
+<style lang="less">
+.home {
+  h1 {
+    font-size: 48px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+  }
+
+  &-header {
+    padding-bottom: 1em;
+    border-bottom: 1px solid #ccc;
+  }
+
+  &-form {
+    display: flex;
+    padding-top: 1.4em;
+    padding-bottom: 0.8em;
+  }
+
+  &-input {
+    flex: 1;
+
+    .el-input__inner {
+      height: 44px;
+      border: 2px solid #444;
+    }
+  }
+
+  &-button {
+    width: 150px;
+    margin-left: 10px;
+    height: 44px;
+    font-family: Georgia, Garamond, "Times New Roman", Times, serif;
+    font-size: 18px;
+    color: #fff;
+    background-color: #323232;
+    border: 1px solid #444;
+    border-radius: 4px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &-popular {
+    display: flex;
+    list-style: none;
+
+    margin-bottom: 3em;
+    flew-wrap: wrap;
+
+    > li {
+      width: 40%;
+      padding-right: 10%;
+
+      a {
+        padding: 10px;
+        display: block;
+        border-bottom: 1px solid #ccc;
+      }
+    }
+  }
+
+  &-desc {
+    zoom: 1;
+  }
+
+  &-padding {
+    padding: 1.4em 0;
+  }
+
+  &-medium {
+    font-size: 15px;
+  }
+
+  &-footer {
+    padding: 1em 0 5em 5em;
+    border-top: 1px solid #ccc;
+  }
+}
 </style>
