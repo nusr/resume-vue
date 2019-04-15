@@ -131,7 +131,6 @@ export function handleGithubUser(userName, data = []) {
   if (data.blog !== undefined && data.blog !== null && data.blog !== "") {
     view.website = addHttp + data.blog;
   }
-  console.log(view);
   return view;
   // let resume = (data.type == 'User' ? 'views/resume.html' : 'views/resumeOrgs.html');
 }
@@ -165,7 +164,7 @@ export function handleGithubRepos(userName, reposData) {
 
   sorted.sort(sortByPopularity);
   let result = sortLanguages(languages, configData.maxLanguages, userName);
-  console.log(result);
+  // console.log(result);
 
   let sortList = sorted
     .map(item => {

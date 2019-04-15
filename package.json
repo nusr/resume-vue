@@ -7,8 +7,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
-    "move":"node ./move.js",
-    "publish":"npm run test:unit && npm run build && npm run move"
+    "publish":"bash deploy.sh"
   },
   "dependencies": {
     "element-ui": "^2.7.2",

@@ -2,14 +2,13 @@
   <el-row class="organ">
     <el-col :span="5"><h2>Organizations</h2></el-col>
     <el-col :span="19">
-      <div
-        v-for="item in organList"
-        :key="item.id"
-        :class="{ 'organ-more': organList.length > 10 }"
-      >
-        <h2>{{ item.name }}</h2>
+      <div v-for="item in organList" :key="item.id" class="organ-item">
+        <div class="organ-title">
+          <h2>{{ item.name }}</h2>
+          <h4>{{ item.now }}</h4>
+        </div>
         <h3>Member</h3>
-        <h4>{{ item.now }}</h4>
+
         <p>
           If you would like more information about this organization, please
           visit
@@ -34,12 +33,6 @@ export default {
     font-size: 100%;
   }
 
-  h4 {
-    position: absolute;
-    top: 0.35em;
-    right: 0;
-  }
-
   a {
     border: none;
     text-decoration: none;
@@ -50,6 +43,17 @@ export default {
     padding-bottom: 2em;
     border-bottom: 1px solid #ccc;
     font-size: 122%;
+  }
+
+  &-title {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-item:last-child {
+    p {
+      border: none;
+    }
   }
 }
 </style>

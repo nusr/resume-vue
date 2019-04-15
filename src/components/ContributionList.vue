@@ -26,6 +26,5 @@ export default {
 <style lang="less">
 .contribute-item {
   padding-bottom: 10px;
-  border-bottom: 1px solid #ccc;
 }
 </style>

@@ -79,15 +79,25 @@
       <language-list
         :language-list="languageList"
         v-if="languageList"
+        v-loading="!languageList"
       ></language-list>
-      <repo-list :repo-list="repoList" v-if="repoList"></repo-list>
+      <repo-list
+        :repo-list="repoList"
+        v-if="repoList"
+        v-loading="!repoList"
+      ></repo-list>
 
       <contribution-list
         :issue-list="issueList"
         v-if="issueList"
+        v-loading="!issueList"
       ></contribution-list>
 
-      <organ-list :organ-list="organList" v-if="organList"></organ-list>
+      <organ-list
+        :organ-list="organList"
+        v-if="organList"
+        v-loading="!organList"
+      ></organ-list>
 
       <el-row>
         <el-col :span="5"><h2>About This R&eacute;sum&eacute;</h2></el-col>

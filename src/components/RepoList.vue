@@ -62,6 +62,10 @@ export default {
   &-item {
     padding: 1em 0;
     border-bottom: 1px solid #ccc;
+
+    &:last-child {
+      border: none;
+    }
   }
 
   &-desc {

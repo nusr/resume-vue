@@ -1,5 +1,5 @@
 <template>
-  <div v-loading.fullscreen.lock="fullscreenLoading">
+  <div v-loading.fullscreen="!userData">
     <component
       :is="whichComponent"
       :user-data="userData"
@@ -30,14 +30,13 @@ export default {
   },
   data() {
     return {
-      userData: {},
+      userData: "",
       userName: "",
       whichComponent: "UserResume",
       languageList: null,
       repoList: null,
       issueList: null,
-      organList: null,
-      fullscreenLoading: false
+      organList: null
     };
   },
   mounted() {
@@ -46,7 +45,6 @@ export default {
       this.$router.replace("/");
       return;
     }
-    this.fullscreenLoading = true;
     this.userName = userName;
     this.getGithubUser();
     this.getGithubRepos();
@@ -54,9 +52,14 @@ export default {
   methods: {
     getGithubUser() {
       const requestUrl = `https://api.github.com/users/${this.userName}`;
-      jsonp(requestUrl, null, (err, data) => {
-        if (err) {
-          console.error(err);
+      jsonp(requestUrl, null, (error, data) => {
+        if (error) {
+          console.error(error);
+          this.$notify.error({
+            title: "Request user info error",
+            message: error
+          });
+          return;
         } else {
           let temp = handleGithubUser(this.userData, data.data);
           if (temp) {
@@ -81,9 +84,14 @@ export default {
       if (pageNumber > 1) {
         url += "&page=" + pageNumber;
       }
-      jsonp(url, null, (err, repos) => {
-        if (err) {
-          console.log(err);
+      jsonp(url, null, (error, repos) => {
+        if (error) {
+          console.log(error);
+          this.$notify.error({
+            title: "Request repository info error",
+            message: error
+          });
+          return;
         } else {
           data = data.concat(repos.data);
           if (repos && repos.data.length == 100) {
@@ -92,9 +100,6 @@ export default {
             const repoResult = handleGithubRepos(this.userName, data);
             this.languageList = repoResult.languageList;
             this.repoList = repoResult.repoList;
-          }
-          if (this.userData && this.userData.type !== "User") {
-            this.fullscreenLoading = false;
           }
         }
       });
@@ -111,7 +116,15 @@ export default {
         url += "&page=" + page_number;
       }
 
-      jsonp(url, null, (err, repos) => {
+      jsonp(url, null, (error, repos) => {
+        if (error) {
+          console.log(error);
+          this.$notify.error({
+            title: "Request issues error",
+            message: error
+          });
+          return;
+        }
         data = data.concat(repos.data.items);
         if (repos.data.total_count == 100) {
           this.getGithubIssues(page_number + 1, data);
@@ -122,9 +135,16 @@ export default {
     },
     getGithubOrgans() {
       let url = "https://api.github.com/users/" + this.userName + "/orgs";
-      jsonp(url, null, (err, response) => {
+      jsonp(url, null, (error, response) => {
+        if (error) {
+          console.log(error);
+          this.$notify.error({
+            title: "Request organs error",
+            message: error
+          });
+          return;
+        }
         this.organList = handleGithubOrgans(this.userName, response.data);
-        this.fullscreenLoading = false;
       });
     }
   }

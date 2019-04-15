@@ -21,15 +21,7 @@
 <script>
 export default {
   name: "CommonFooter",
-  props: {
-    userData: {
-      type: Object,
-      default() {
-        return {};
-      },
-      required: true
-    }
-  }
+  props: ["userData"]
 };
 </script>
 
