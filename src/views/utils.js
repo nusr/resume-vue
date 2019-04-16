@@ -135,7 +135,7 @@ export function handleGithubUser(userName, data = []) {
   // let resume = (data.type == 'User' ? 'views/resume.html' : 'views/resumeOrgs.html');
 }
 
-export function handleGithubRepos(userName, reposData) {
+export function handleGithubRepos(userName, reposData = []) {
   let sorted = [];
   let languages = {};
   let popularity;
@@ -203,7 +203,8 @@ export function handleGithubRepos(userName, reposData) {
     .slice(0, configData.maxItems);
   return {
     languageList: result,
-    repoList: sortList
+    repoList: sortList,
+    forkFlag: reposData.length > 0
   };
 }
 

@@ -78,25 +78,18 @@
 
       <language-list
         :language-list="languageList"
-        v-if="languageList"
-        v-loading="!languageList"
+        v-if="!$isEmpty(languageList)"
       ></language-list>
-      <repo-list
-        :repo-list="repoList"
-        v-if="repoList"
-        v-loading="!repoList"
-      ></repo-list>
+      <repo-list :repo-list="repoList" :fork-flag="forkFlag"></repo-list>
 
       <contribution-list
         :issue-list="issueList"
-        v-if="issueList"
-        v-loading="!issueList"
+        v-if="!$isEmpty(issueList)"
       ></contribution-list>
 
       <organ-list
         :organ-list="organList"
-        v-if="organList"
-        v-loading="!organList"
+        v-if="!$isEmpty(organList)"
       ></organ-list>
 
       <el-row>
@@ -143,7 +136,14 @@ export default {
     repoList,
     OrganList
   },
-  props: ["userData", "languageList", "repoList", "issueList", "organList"]
+  props: [
+    "userData",
+    "languageList",
+    "repoList",
+    "issueList",
+    "organList",
+    "forkFlag"
+  ]
 };
 </script>
 

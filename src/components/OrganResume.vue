@@ -70,14 +70,13 @@
 
       <language-list
         :language-list="languageList"
-        v-if="languageList"
-        v-loading="!languageList"
+        v-if="!$isEmpty(languageList)"
       ></language-list>
 
       <repo-list
+        other="Our"
         :repo-list="repoList"
-        v-if="repoList"
-        v-loading="!repoList"
+        :fork-flag="forkFlag"
       ></repo-list>
 
       <el-row>
@@ -119,7 +118,7 @@ export default {
     LanguageList,
     repoList
   },
-  props: ["userData", "languageList", "repoList"]
+  props: ["userData", "languageList", "repoList", "forkFlag"]
 };
 </script>
 

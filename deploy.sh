@@ -9,12 +9,13 @@ npm run build
 # cd build dir
 cd dist
 
+# commit dist
+
 git init
 git add -A
 git commit -m 'deploy'
 
-
-# deploy
+# push to gh-pages branch
 git push -f git@github.com:nusr/resume-vue.git master:gh-pages
 
 cd -

@@ -4,7 +4,16 @@
       ><h2>{{ other }} Popular Repositories</h2></el-col
     >
     <el-col :span="19">
-      <div v-for="item in repoList" :key="item.id" class="repo-item">
+      <template v-if="$isEmpty(repoList)">
+        <p class="enlarge" v-if="forkFlag">
+          All of this user's repositories seem to be forks. Sorry.
+        </p>
+        <p class="enlarge" v-else>
+          Unfortunately, this user does not seem to have any
+          <strong>public</strong> repositories.
+        </p>
+      </template>
+      <div v-for="item in repoList" :key="item.id" class="repo-item" v-else>
         <div class="repo-title">
           <h2>
             <a :href="`https://github.com/${item.username}/${item.name}`">{{
@@ -52,6 +61,10 @@ export default {
     other: {
       type: String,
       default: ""
+    },
+    forkFlag: {
+      type: Boolean,
+      default: false
     }
   }
 };

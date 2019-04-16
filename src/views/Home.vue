@@ -54,11 +54,16 @@
         if you want to help :-)
       </p>
       <footer class="home-footer home-medium">
-        vue imitate
+        Vue2.x imitate
         <a
           href="https://github.com/resume/resume.github.com"
           title="resume.github.com"
+          style="padding-right:20px;"
           >resume.github.com</a
+        >
+        github
+        <a href="https://github.com/nusr/resume-vue" title="resume-vue"
+          >resume-vue</a
         >
       </footer>
     </article>

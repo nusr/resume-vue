@@ -1,5 +1,5 @@
 <template>
-  <div v-loading.fullscreen="!userData">
+  <div v-loading.fullscreen="!repoList">
     <component
       :is="whichComponent"
       :user-data="userData"
@@ -7,6 +7,7 @@
       :repo-list="repoList"
       :issue-list="issueList"
       :organ-list="organList"
+      :fork-flag="forkFlag"
     />
   </div>
 </template>
@@ -36,7 +37,8 @@ export default {
       languageList: null,
       repoList: null,
       issueList: null,
-      organList: null
+      organList: null,
+      forkFlag: false
     };
   },
   mounted() {
@@ -100,6 +102,7 @@ export default {
             const repoResult = handleGithubRepos(this.userName, data);
             this.languageList = repoResult.languageList;
             this.repoList = repoResult.repoList;
+            this.forkFlag = repoResult.forkFlag;
           }
         }
       });
